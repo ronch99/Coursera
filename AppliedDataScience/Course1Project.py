@@ -1,5 +1,3 @@
-#To be updated, mainly merging all functions together. 
-import sys
 import pandas as pd
 import numpy as np
 from scipy.stats import ttest_ind
@@ -62,6 +60,7 @@ def run_ttest():
     before_start = start[:-1] + str(int(start[-1]) - 1)
     bottom = get_recession_bottom()
     utowns = get_list_of_university_towns()
+
     housing = convert_housing_data_to_quarters()[[before_start, bottom]]
     housing = housing.sort_index()
     housing['Price Ratio'] = housing[before_start] / housing[bottom]
@@ -76,5 +75,3 @@ def run_ttest():
     better = 'university town' if better else 'non-university town'
     
     return (diff, pvalue, better)
-
-run_ttest(sys.argv)
